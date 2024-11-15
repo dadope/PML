@@ -1,0 +1,18 @@
+[project]
+name = "PML_DPS"
+version = "0.1"
+description = "A reimplementation of the paper: diffusion posterior sampling for noisy inverse problems"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pillow",
+    "matplotlib",
+
+    "torch",
+    "torchvision==0.20.0",
+]
+
+[dependency-groups]
+dev = [
+    "jupyter"
+]

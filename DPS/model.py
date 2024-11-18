@@ -6,4 +6,4 @@ class Model(torch.nn.Module):
         super().__init__()
 
     def forward(self, X):
-        pass
+        return X

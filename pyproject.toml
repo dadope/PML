@@ -5,6 +5,7 @@ description = "A reimplementation of the paper: diffusion posterior sampling for
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "scipy",
     "pillow",
     "matplotlib",
 

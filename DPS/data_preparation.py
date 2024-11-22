@@ -63,9 +63,20 @@ def load_data(**kwargs) -> tuple:
     return DataLoader(train_ds, **data_loader_args), DataLoader(test_ds, **data_loader_args)
 
 
-def show(x, outfile=None):
-    x = tensor_to_pil(x)
-    plt.imshow(x)
+def show(x, outfile=None, transforms=None):
+
+    if not transforms:
+        x = tensor_to_pil(x)
+        plt.imshow(x)
+    else:
+        _, axarr = plt.subplots(1, len(transforms), figsize=(20, 20))
+        for ax, (transform_name, transform) in zip(axarr, transforms.items()):
+            img = x.copy()
+            img = transform(img)
+            img = tensor_to_pil(img)
+            ax.axis('off')
+            ax.set_title(transform_name)
+            ax.imshow(img)
 
     if outfile:
         plt.savefig(outfile)

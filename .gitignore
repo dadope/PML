@@ -4,3 +4,5 @@ build
 __pycache__
 __pycache__DPS_v2/models/ffhq_10m.pt
 *.pt
+__pycache__/
+*.pyc

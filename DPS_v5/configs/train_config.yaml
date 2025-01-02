@@ -1,0 +1,23 @@
+data:
+  root_dir: data/ffhq256
+  batch_size: 64
+  num_workers: 4 
+  shuffle: true
+
+augmentation:
+  random_horizontal_flip: true
+  random_resized_crop: 
+    scale: [0.8, 1.0]
+  color_jitter:
+    brightness: 0.2
+    contrast: 0.2
+    saturation: 0.2
+    hue: 0.1
+
+training:
+  epochs: 50
+  learning_rate: "1e-4"
+  lr_scheduler:
+    step_size: 10
+    gamma: 0.5
+  criterion: mse  # Mean Squared Error

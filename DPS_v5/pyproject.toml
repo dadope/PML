@@ -1,0 +1,28 @@
+[project]
+name = "dps-original"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "certifi==2022.9.14",
+    "charset-normalizer==2.1.1",
+    "contourpy==1.0.5",
+    "cycler==0.11.0",
+    "fonttools==4.37.2",
+    "idna==3.4",
+    "kiwisolver==1.4.4",
+    "matplotlib==3.6.0",
+    "numpy<1.25.0",
+    "packaging==21.3",
+    "pillow==9.2.0",
+    "pyparsing==3.0.9",
+    "python-dateutil==2.8.2",
+    "pyyaml==6.0",
+    "requests==2.28.1",
+    "scipy==1.9.1",
+    "six==1.16.0",
+    "tqdm==4.64.1",
+    "typing-extensions==4.3.0",
+    "urllib3==1.26.12",
+]

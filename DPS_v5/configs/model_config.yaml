@@ -14,6 +14,6 @@ dropout: 0.1
 resblock_updown: True  
 use_fp16: False  
 use_new_attention_order: False 
-model_path: models/diffusion_ffhq_256_epoch50.pt
+model_path: models/model_epoch_4.pt
 
 

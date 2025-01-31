@@ -2,7 +2,7 @@ import torch
 from abc import ABC, abstractmethod
 from utils.img_utils import fft2, ifft2
 from guided_diffusion.noise_registry import GaussianNoise, PoissonNoise
-
+from torch import linalg as LA
 # Registry for conditioning methods
 CONDITIONING_REGISTRY = {}
 
@@ -54,7 +54,7 @@ class BaseConditioning(ABC):
         else:
             raise NotImplementedError(f"Unsupported noise type: {type(self.noiser).__name__}")
 
-        norm = diff.pow(2).sum().sqrt()
+        norm = LA.vector_norm(diff)
         gradient = torch.autograd.grad(
             outputs=norm, inputs=x_prev, retain_graph=False, allow_unused=True
         )[0]
@@ -76,7 +76,7 @@ class PhaseRetrievalConditioning(BaseConditioning):
     """
     Phase retrieval (ps) conditioning method.
     """
-    def __init__(self, operator, noiser, scale=1.0, **kwargs):
+    def __init__(self, operator, noiser, scale=1, **kwargs):
         super().__init__(operator, noiser, **kwargs)
         self.scale = scale
 
@@ -91,5 +91,5 @@ class PhaseRetrievalConditioning(BaseConditioning):
             x_0_hat = x_0_hat.to(measurement.device)
 
         gradient, norm = self.compute_gradient_and_norm(x_prev, x_0_hat, measurement, **kwargs)
-        x_t = x_t - self.scale * gradient
+        x_t = x_t - self.scale*norm * gradient
         return x_t.detach(), norm.detach()

@@ -1,7 +1,7 @@
 conditioning:
   method: ps
   params:
-    scale: 0.5
+    scale: 0.99
 
 data:
   name: ffhq
